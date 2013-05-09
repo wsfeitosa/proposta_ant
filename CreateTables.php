@@ -14,13 +14,25 @@ class CreateTables {
 	
 	public function Main(){
 
+		$this->CreateDatabase();
 		$this->CreatePropostasTable();
 		$this->CreateItensPropostasTables();
 		$this->CreateItemTaxas();
 		$this->CreateClientesPropostas();
+		$this->CreateEmails();
 		
 	}
 	
+	protected function CreateDatabase(){
+
+		echo "Criando a base de dados...";
+
+		$stmt = "CREATE DATABASE CLIENTES IF NOT EXISTS";
+
+		return $this->conn->exec($stmt);
+
+	}
+
 	protected function CreatePropostasTable(){
 		
 		echo "Criando a tabela propostas...<br />\r\n";
@@ -113,6 +125,24 @@ class CreateTables {
 				  KEY `id_cliente` (`id_cliente`,`id_proposta`)
 				) ENGINE=MyISAM AUTO_INCREMENT=417 DEFAULT CHARSET=latin1";
 
+		return $this->conn->exec($stmt);
+
+	}
+
+	protected function CreateEmails(){
+
+		echo "Criando à tabela emails_propostas...<br />\r\n";
+
+		$stmt = "CREATE TABLE IF NOT EXISTS `emails_propostas` (
+				  `id_email_proposta` int(11) NOT NULL AUTO_INCREMENT,
+				  `email` varchar(255) DEFAULT NULL,
+				  `ativo` char(1) NOT NULL,
+				  `id_proposta` int(11) NOT NULL,
+				  PRIMARY KEY (`id_email_proposta`),
+				  KEY `fk_emails_propostas_propostas` (`id_proposta`),
+				  KEY `id_proposta` (`id_proposta`)
+				) ENGINE=MyISAM AUTO_INCREMENT=1549 DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci'";
+		
 		return $this->conn->exec($stmt);
 
 	}

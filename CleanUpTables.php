@@ -18,6 +18,7 @@ class CleanUpTables {
 		$this->cleanUpItensPropostas();
 		$this->cleanUpTaxas();
 		$this->cleanUpClientes();
+		$this->cleanUpEmails();
 		
 	}
 	
@@ -60,6 +61,17 @@ class CleanUpTables {
 		return $this->conn->delete("CLIENTES.clientes_x_propostas");
 
 	}
+
+	protected functionn cleanUpEmails(){
+
+		$this->conn->query("ALTER TABLE CLIENTES.emails_propostas AUTO_INCREMENT = 1");
+
+		echo "Limpando à tabela de emails...<br />\r\n";
+
+		return $this->conn->delete("CLIENTES.emails_propostas");
+
+	}
+
 			
 }//END CLASS
 
