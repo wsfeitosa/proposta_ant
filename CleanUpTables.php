@@ -19,6 +19,17 @@ class CleanUpTables {
 		$this->cleanUpTaxas();
 		$this->cleanUpClientes();
 		$this->cleanUpEmails();
+		$this->cleanUpAcordosTaxasLocaisGlobais();
+		$this->cleanUpClientesAcordosTaxasLocais();
+		$this->cleanUpDesbloqueioTaxas();
+		$this->cleanUpDesbloqueioValidades();
+		$this->cleanUpEnviosPropostas();
+		$this->cleanUpLogPropostas();
+		$this->cleanUpNotasExportacao();
+		$this->cleanUpNotasImportacao();
+		$this->cleanUpPortosAcordosTaxas();
+		$this->cleanUpStatusItensPropostas();
+		$this->cleanUpTaxasAcordosTaxasLocais();
 		
 	}
 	
@@ -26,7 +37,7 @@ class CleanUpTables {
 		
 		$this->conn->query("ALTER TABLE CLIENTES.propostas AUTO_INCREMENT = 1");
 		
-		echo "Limpando ‡ tabela propostas...<br />\r\n";
+		echo "Limpando ‡† tabela propostas...<br />\r\n";
 		
 		return $this->conn->delete("CLIENTES.propostas");
 	
@@ -36,7 +47,7 @@ class CleanUpTables {
 		
 		$this->conn->query("ALTER TABLE CLIENTES.itens_proposta AUTO_INCREMENT = 1");
 		
-		echo "Limpando ‡ tabela itens_propostas...<br />\r\n";
+		echo "Limpando ‡† tabela itens_propostas...<br />\r\n";
 		
 		return $this->conn->delete("CLIENTES.itens_proposta");
 		
@@ -46,7 +57,7 @@ class CleanUpTables {
 		
 		$this->conn->query("ALTER TABLE CLIENTES.taxas_item_proposta AUTO_INCREMENT = 1");
 		
-		echo "Limpando ‡ tabela taxas_item_proposta...<br />\r\n";
+		echo "Limpando ‡† tabela taxas_item_proposta...<br />\r\n";
 		
 		return $this->conn->delete("CLIENTES.taxas_item_proposta");
 		
@@ -56,22 +67,132 @@ class CleanUpTables {
 
 		$this->conn->query("ALTER TABLE CLIENTES.clientes_x_propostas AUTO_INCREMENT = 1");
 
-		echo "Limpando ‡ tabela clientes_x_propostas...<br />\r\n";
+		echo "Limpando ‡† tabela clientes_x_propostas...<br />\r\n";
 
 		return $this->conn->delete("CLIENTES.clientes_x_propostas");
 
 	}
 
-	protected functionn cleanUpEmails(){
+	protected function cleanUpEmails(){
 
 		$this->conn->query("ALTER TABLE CLIENTES.emails_propostas AUTO_INCREMENT = 1");
 
-		echo "Limpando ‡ tabela de emails...<br />\r\n";
+		echo "Limpando ‡† tabela de emails...<br />\r\n";
 
 		return $this->conn->delete("CLIENTES.emails_propostas");
 
 	}
 
-			
+	protected function  cleanUpAcordosTaxasLocaisGlobais(){
+		
+		$this->conn->query("ALTER TABLE CLIENTES.acordos_taxas_locais_globais AUTO_INCREMENT = 1");
+
+		echo "Limpando ‡† tabela de acordos das taxas locais...<br />\r\n";
+
+		return $this->conn->delete("CLIENTES.acordos_taxas_locais_globais");
+
+		
+	}
+	
+	protected function cleanUpClientesAcordosTaxasLocais(){
+				
+		$this->conn->query("ALTER TABLE CLIENTES.clientes_x_acordos_taxas_locais_globais AUTO_INCREMENT = 1");
+
+		echo "Limpando ‡† tabela de clientes dos acordos das taxas locais...<br />\r\n";
+
+		return $this->conn->delete("CLIENTES.clientes_x_acordos_taxas_locais_globais");
+
+	}
+
+	protected function cleanUpDesbloqueioTaxas(){
+				
+		$this->conn->query("ALTER TABLE CLIENTES.desbloqueios_taxas AUTO_INCREMENT = 1");
+
+		echo "Limpando ‡† tabela de desbloqueio de taxas..<br />\r\n";
+
+		return $this->conn->delete("CLIENTES.desbloqueios_taxas");
+
+	}
+
+	protected function cleanUpDesbloqueioValidades(){
+				
+		$this->conn->query("ALTER TABLE CLIENTES.desbloqueios_validades AUTO_INCREMENT = 1");
+
+		echo "Limpando ‡† tabela de desbloqueio de validades..<br />\r\n";
+
+		return $this->conn->delete("CLIENTES.desbloqueios_validades");
+
+	}
+
+	protected function cleanUpEnviosPropostas(){
+		
+		$this->conn->query("ALTER TABLE CLIENTES.envios_propostas AUTO_INCREMENT = 1");
+
+		echo "Limpando ‡† tabela de desbloqueio de envios das propostas...<br />\r\n";
+
+		return $this->conn->delete("CLIENTES.envios_propostas");
+		
+	}
+		
+	protected function cleanUpLogPropostas(){
+		
+		$this->conn->query("ALTER TABLE CLIENTES.log_propostas AUTO_INCREMENT = 1");
+
+		echo "Limpando ‡† tabela de desbloqueio de log das propostas...<br />\r\n";
+
+		return $this->conn->delete("CLIENTES.log_propostas");
+		
+	}
+
+	protected function cleanUpNotasExportacao(){
+		
+		$this->conn->query("ALTER TABLE CLIENTES.notas_exportacao AUTO_INCREMENT = 1");
+
+		echo "Limpando ‡† tabela das notas de exporta√ß√£o...<br />\r\n";
+
+		return $this->conn->delete("CLIENTES.notas_exportacao");
+		
+	}
+
+	protected function cleanUpNotasImportacao(){
+		
+		$this->conn->query("ALTER TABLE CLIENTES.notas_importacao AUTO_INCREMENT = 1");
+
+		echo "Limpando ‡† tabela das notas de importa√ß√£o...<br />\r\n";
+
+		return $this->conn->delete("CLIENTES.notas_importacao");
+		
+	}
+
+	protected function cleanUpPortosAcordosTaxas(){
+		
+		$this->conn->query("ALTER TABLE CLIENTES.portos_x_acordos_taxas_globais AUTO_INCREMENT = 1");
+
+		echo "Limpando ‡† tabela dos portos dos acordos de taxas locais...<br />\r\n";
+
+		return $this->conn->delete("CLIENTES.portos_x_acordos_taxas_globais");
+		
+	}
+
+	protected function cleanUpStatusItensPropostas(){
+		
+		$this->conn->query("ALTER TABLE CLIENTES.status_itens_propostas AUTO_INCREMENT = 1");
+
+		echo "Limpando ‡† tabela de status dos itens das propostas...<br />\r\n";
+
+		return $this->conn->delete("CLIENTES.status_itens_propostas");
+		
+	}
+
+	protected function cleanUpTaxasAcordosTaxasLocais(){
+		
+		$this->conn->query("ALTER TABLE CLIENTES.taxas_x_acordos_taxas_locais_globais AUTO_INCREMENT = 1");
+
+		echo "Limpando ‡† tabela de taxas dos acordos de taxas locais...<br />\r\n";
+
+		return $this->conn->delete("CLIENTES.taxas_x_acordos_taxas_locais_globais");
+		
+	}
+	
 }//END CLASS
 
