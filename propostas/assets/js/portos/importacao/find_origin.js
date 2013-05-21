@@ -1,0 +1,20 @@
+$(document).ready(function(){
+	
+	$("input:checkbox").click(function(){
+		
+		$("#un_origem", window.parent.document).val($(this).attr("id"));
+		$("#origem", window.parent.document).val($(this).val());
+		
+		/** Zera o porto de destino e às taxas **/
+		$("#frete_adicionais option", window.parent.document).empty();
+		$("#taxas_locais option", window.parent.document).empty();
+		$("#destino", window.parent.document).val("");
+		$("#un_destino", window.parent.document).val("");
+		
+		$("#pop",window.parent.document).hide("slow");
+		
+	});
+	
+	
+	
+});//END FILE

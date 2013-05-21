@@ -148,7 +148,7 @@ class CleanUpTables {
 		
 		$this->conn->query("ALTER TABLE CLIENTES.notas_exportacao AUTO_INCREMENT = 1");
 
-		echo "Limpando à  tabela das notas de exportaÃ§Ã£o...<br />\r\n";
+		echo "Limpando à  tabela das notas de exportação...<br />\r\n";
 
 		return $this->conn->delete("CLIENTES.notas_exportacao");
 		
@@ -158,7 +158,7 @@ class CleanUpTables {
 		
 		$this->conn->query("ALTER TABLE CLIENTES.notas_importacao AUTO_INCREMENT = 1");
 
-		echo "Limpando à  tabela das notas de importaÃ§Ã£o...<br />\r\n";
+		echo "Limpando à  tabela das notas de importação...<br />\r\n";
 
 		return $this->conn->delete("CLIENTES.notas_importacao");
 		
